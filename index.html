@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scierie Germond Fr&egrave;res &mdash; Sciage sur mesure &agrave; Perche-en-Noc&eacute; (61)</title>
+    <meta name="description" content="Scierie Germond Fr&egrave;res, sciage &agrave; fa&ccedil;on depuis 1990 au c&oelig;ur du Perche. Ch&ecirc;ne, douglas, charpente, bardeaux, palettes sur mesure. Le Sablon, 61340 Perche-en-Noc&eacute;.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --maroon: #7B2D26;
+            --maroon-dark: #5C1F1A;
+            --brown: #A0714F;
+            --brown-light: #C9A882;
+            --cream: #FBF7F3;
+            --cream-dark: #F0E8DE;
+            --text: #2C2C2C;
+            --text-light: #5A5A5A;
+        }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Source Sans 3', sans-serif; color: var(--text); background: var(--cream); line-height: 1.7; }
+        h1, h2, h3 { font-family: 'Playfair Display', serif; }
+        img { max-width: 100%; height: auto; display: block; }
+        a { color: var(--maroon); text-decoration: none; }
+
+        /* NAV */
+        nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            background: rgba(251,247,243,0.97);
+            border-bottom: 1px solid var(--cream-dark);
+            backdrop-filter: blur(8px);
+        }
+        .nav-inner {
+            max-width: 1100px; margin: 0 auto;
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 0.6rem 1.5rem;
+        }
+        .nav-logo { height: 50px; }
+        .nav-links { display: flex; gap: 1.8rem; list-style: none; }
+        .nav-links a { font-size: 0.95rem; font-weight: 600; color: var(--text); transition: color 0.2s; }
+        .nav-links a:hover { color: var(--maroon); }
+        .nav-toggle { display: none; background: none; border: none; cursor: pointer; }
+        .nav-toggle span { display: block; width: 26px; height: 3px; background: var(--text); margin: 5px 0; border-radius: 2px; }
+
+        /* HERO */
+        .hero {
+            position: relative; min-height: 85vh;
+            display: flex; align-items: center; justify-content: center;
+            overflow: hidden; margin-top: 70px;
+        }
+        .hero-bg {
+            position: absolute; inset: 0;
+            background: url('img/header.jpg') center/cover no-repeat;
+        }
+        .hero-bg::after {
+            content: ''; position: absolute; inset: 0;
+            background: linear-gradient(180deg, rgba(44,44,44,0.55) 0%, rgba(44,44,44,0.4) 100%);
+        }
+        .hero-content {
+            position: relative; z-index: 2; text-align: center;
+            color: #fff; padding: 2rem;
+        }
+        .hero-content h1 {
+            font-size: clamp(2.2rem, 5vw, 3.6rem);
+            margin-bottom: 0.6rem; line-height: 1.2;
+            text-shadow: 0 2px 12px rgba(0,0,0,0.35);
+        }
+        .hero-content p {
+            font-size: clamp(1.05rem, 2vw, 1.3rem);
+            max-width: 600px; margin: 0 auto 1.5rem;
+            text-shadow: 0 1px 6px rgba(0,0,0,0.3);
+        }
+        .btn {
+            display: inline-block; padding: 0.85rem 2rem;
+            background: var(--maroon); color: #fff;
+            font-weight: 600; border-radius: 4px;
+            transition: background 0.2s;
+        }
+        .btn:hover { background: var(--maroon-dark); }
+
+        /* SECTIONS */
+        .section { padding: 5rem 1.5rem; max-width: 1100px; margin: 0 auto; }
+        .section-alt { background: var(--cream-dark); }
+        .section-alt .section { padding: 5rem 1.5rem; }
+        .section-title {
+            font-size: clamp(1.6rem, 3vw, 2.2rem);
+            color: var(--maroon); margin-bottom: 0.4rem;
+        }
+        .section-subtitle {
+            color: var(--text-light); font-size: 1.05rem;
+            margin-bottom: 2.5rem; max-width: 600px;
+        }
+        .divider {
+            width: 50px; height: 3px; background: var(--brown);
+            margin: 0.8rem 0 1.5rem; border-radius: 2px;
+        }
+
+        /* ABOUT */
+        .about-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;
+            align-items: center;
+        }
+        .about-img { border-radius: 6px; overflow: hidden; }
+        .about-img img { width: 100%; object-fit: cover; aspect-ratio: 4/3; }
+        .about-text p { margin-bottom: 1rem; }
+        .about-text .highlight {
+            display: inline-block; background: var(--maroon); color: #fff;
+            padding: 0.15rem 0.6rem; border-radius: 3px; font-weight: 600;
+            font-size: 0.9rem; margin-bottom: 0.8rem;
+        }
+
+        /* SERVICES */
+        .service-card {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;
+            align-items: center; margin-bottom: 4rem;
+        }
+        .service-card:nth-child(even) { direction: rtl; }
+        .service-card:nth-child(even) > * { direction: ltr; }
+        .service-img { border-radius: 6px; overflow: hidden; }
+        .service-img img { width: 100%; object-fit: cover; aspect-ratio: 4/3; }
+        .service-text h3 {
+            font-size: 1.5rem; color: var(--maroon); margin-bottom: 0.3rem;
+        }
+        .service-text p { color: var(--text-light); margin-bottom: 0.8rem; }
+        .service-text ul {
+            list-style: none; padding: 0;
+        }
+        .service-text ul li {
+            padding: 0.3rem 0 0.3rem 1.4rem;
+            position: relative; color: var(--text-light);
+        }
+        .service-text ul li::before {
+            content: ''; position: absolute; left: 0; top: 0.7rem;
+            width: 8px; height: 8px; background: var(--brown);
+            border-radius: 50%;
+        }
+
+        /* GALLERY */
+        .gallery-grid {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1rem;
+        }
+        .gallery-grid img {
+            width: 100%; aspect-ratio: 4/3; object-fit: cover;
+            border-radius: 6px;
+            transition: transform 0.3s;
+        }
+        .gallery-grid img:hover { transform: scale(1.03); }
+
+        /* BADGES */
+        .badges {
+            display: flex; gap: 2rem; flex-wrap: wrap;
+            align-items: center; justify-content: center;
+            padding: 2rem 0;
+        }
+        .badge-item {
+            text-align: center; color: var(--text-light); font-size: 0.95rem;
+        }
+        .badge-item .num {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.4rem; color: var(--maroon); display: block;
+        }
+
+        /* CONTACT */
+        .contact-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;
+        }
+        .contact-info h3 { font-size: 1.3rem; color: var(--maroon); margin-bottom: 1rem; }
+        .contact-info p { margin-bottom: 0.8rem; color: var(--text-light); }
+        .contact-info a { color: var(--maroon); font-weight: 600; }
+        .contact-map {
+            border-radius: 6px; overflow: hidden; min-height: 300px;
+            background: var(--cream-dark);
+        }
+        .contact-map iframe { width: 100%; height: 100%; min-height: 300px; border: 0; }
+        .hours-table { width: 100%; border-collapse: collapse; margin-top: 0.5rem; }
+        .hours-table td {
+            padding: 0.4rem 0; color: var(--text-light);
+            border-bottom: 1px solid var(--cream-dark);
+        }
+        .hours-table td:last-child { text-align: right; font-weight: 600; color: var(--text); }
+
+        /* FOOTER */
+        footer {
+            background: var(--text); color: rgba(255,255,255,0.7);
+            text-align: center; padding: 2rem 1.5rem; font-size: 0.9rem;
+        }
+        footer a { color: rgba(255,255,255,0.9); }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .nav-links.open {
+                display: flex; flex-direction: column;
+                position: absolute; top: 100%; left: 0; right: 0;
+                background: var(--cream); padding: 1rem 1.5rem;
+                border-bottom: 1px solid var(--cream-dark);
+            }
+            .nav-toggle { display: block; }
+            .about-grid, .service-card, .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+            .service-card:nth-child(even) { direction: ltr; }
+            .hero { min-height: 70vh; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-inner">
+            <img src="img/logo.jpg" alt="Scierie Germond Fr&egrave;res" class="nav-logo">
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#about">&Agrave; propos</a></li>
+                <li><a href="#services">Prestations</a></li>
+                <li><a href="#gallery">R&eacute;alisations</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="nav-toggle" onclick="document.getElementById('navLinks').classList.toggle('open')" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <h1>Scierie Germond Fr&egrave;res</h1>
+            <p>Sciage sur mesure depuis 1990 au c&oelig;ur du Parc Naturel du Perche</p>
+            <a href="#contact" class="btn">Demander un devis</a>
+        </div>
+    </section>
+
+    <!-- CHIFFRES -->
+    <div class="section-alt">
+        <div class="section" style="padding: 2.5rem 1.5rem;">
+            <div class="badges">
+                <div class="badge-item"><span class="num">35+</span> ann&eacute;es d'exp&eacute;rience</div>
+                <div class="badge-item"><span class="num">Ch&ecirc;ne</span> &amp; Douglas</div>
+                <div class="badge-item"><span class="num">Sur mesure</span> professionnels &amp; particuliers</div>
+                <div class="badge-item"><span class="num">Fibois</span> adh&eacute;rent Normandie</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ABOUT -->
+    <section class="section" id="about">
+        <h2 class="section-title">&Agrave; propos</h2>
+        <div class="divider"></div>
+        <p class="section-subtitle">Une scierie familiale au savoir-faire reconnu</p>
+        <div class="about-grid">
+            <div class="about-img">
+                <img src="img/photo1.jpg" alt="Int&eacute;rieur de la scierie Germond &mdash; sciage de grumes" loading="lazy">
+            </div>
+            <div class="about-text">
+                <span class="highlight">Entreprise familiale</span>
+                <p>Situ&eacute;e au Sablon, &agrave; Perche-en-Noc&eacute; dans l'Orne, la <strong>Scierie Germond Fr&egrave;res</strong> est une entreprise familiale reprise par Bernard et Patrick Germond en 1990, dans la continuit&eacute; du travail de leur p&egrave;re Daniel.</p>
+                <p>Implant&eacute;e au c&oelig;ur du Parc Naturel R&eacute;gional du Perche, la scierie transforme principalement le <strong>ch&ecirc;ne</strong> mais &eacute;galement des r&eacute;sineux tels que le <strong>pin Douglas</strong> et le pin sylvestre.</p>
+                <p>Notre savoir-faire nous permet de r&eacute;pondre aussi bien aux demandes des professionnels &mdash; menuisiers, charpentiers, fabricants de meubles &mdash; qu'aux besoins des particuliers souhaitant faire scier leur propre bois.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES -->
+    <div class="section-alt">
+        <section class="section" id="services">
+            <h2 class="section-title">Nos prestations</h2>
+            <div class="divider"></div>
+            <p class="section-subtitle">Du sciage &agrave; fa&ccedil;on aux produits finis, un accompagnement complet</p>
+
+            <div class="service-card">
+                <div class="service-img">
+                    <img src="img/photo2.jpg" alt="Grumes de ch&ecirc;ne pr&ecirc;tes au sciage" loading="lazy">
+                </div>
+                <div class="service-text">
+                    <h3>Sciage &agrave; fa&ccedil;on</h3>
+                    <p>Toute personne peut venir faire scier son arbre &agrave; fa&ccedil;on. Plot, aviv&eacute;e, charpente sur liste : nous adaptons le d&eacute;bit &agrave; votre projet.</p>
+                    <ul>
+                        <li>Sciage occasionnel : agriculteurs, menuisiers, particuliers</li>
+                        <li>Sciage r&eacute;gulier : fabricants de meubles, professionnels du bois</li>
+                        <li>D&eacute;bit sur mesure selon vos sp&eacute;cifications</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-img">
+                    <img src="img/charpente2.jpg" alt="Bois de charpente et d'ossature sci&eacute;s sur mesure" loading="lazy">
+                </div>
+                <div class="service-text">
+                    <h3>Charpente &amp; ossature</h3>
+                    <p>D&eacute;bit sur mesure de bois de charpente et d'ossature en ch&ecirc;ne ou en Douglas, pour professionnels et particuliers.</p>
+                    <ul>
+                        <li>Poutres et solives</li>
+                        <li>Planches de coffrage et de bardage</li>
+                        <li>Ch&ecirc;ne et Douglas sur liste</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-img">
+                    <img src="img/bardeaux1.jpg" alt="Grumes et tuiles de bois (bardeaux) Douglas" loading="lazy">
+                </div>
+                <div class="service-text">
+                    <h3>Tuiles de bois (bardeaux)</h3>
+                    <p>Nous produisons des tuiles de bois en pin Douglas, calibr&eacute;es et taill&eacute;es en biseau, trait&eacute;es fongicide et insecticide.</p>
+                    <ul>
+                        <li>Dimensions : 600 &times; 145 mm, &eacute;paisseur 17 &agrave; 3 mm</li>
+                        <li>Quadruple couche au pureau de 18 cm</li>
+                        <li>34 tuiles par paquet (0,8 m&sup2;), palettisation possible</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-img">
+                    <img src="img/palettes1.jpg" alt="Caisses et palettes en bois sur mesure" loading="lazy">
+                </div>
+                <div class="service-text">
+                    <h3>Palettes &amp; caisses sur mesure</h3>
+                    <p>&Agrave; partir de votre cahier des charges, nous r&eacute;alisons des palettes et caisses aux dimensions souhait&eacute;es.</p>
+                    <ul>
+                        <li>Palettes standard et sp&eacute;cifiques</li>
+                        <li>Caisses sur mesure</li>
+                        <li>Palettes &agrave; tuiles</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- GALLERY -->
+    <section class="section" id="gallery">
+        <h2 class="section-title">Nos r&eacute;alisations</h2>
+        <div class="divider"></div>
+        <p class="section-subtitle">Un aper&ccedil;u de notre activit&eacute; et de nos produits</p>
+        <div class="gallery-grid">
+            <img src="img/sciage1.jpg" alt="Bois sci&eacute; empil&eacute;" loading="lazy">
+            <img src="img/charpente1.jpg" alt="Poutre de charpente en ch&ecirc;ne" loading="lazy">
+            <img src="img/bardeaux2.jpg" alt="D&eacute;tail d'un bardeau en Douglas" loading="lazy">
+            <img src="img/sciage2.jpg" alt="Planches de sciage" loading="lazy">
+            <img src="img/charpente3.jpg" alt="Bois d'ossature" loading="lazy">
+            <img src="img/palettes2.jpg" alt="Palette en bois sur mesure" loading="lazy">
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <div class="section-alt">
+        <section class="section" id="contact">
+            <h2 class="section-title">Nous contacter</h2>
+            <div class="divider"></div>
+            <p class="section-subtitle">Venez nous rendre visite ou contactez-nous pour un devis</p>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>Coordonn&eacute;es</h3>
+                    <p><strong>Scierie Germond Fr&egrave;res</strong><br>Le Sablon<br>61340 Perche-en-Noc&eacute;</p>
+                    <p>T&eacute;l&eacute;phone : <a href="tel:+33233734471">02 33 73 44 71</a><br>
+                       Fax : 02 33 83 94 43</p>
+                    <p>Email : <a href="mailto:scieriegermond@orange.fr">scieriegermond@orange.fr</a></p>
+                    <h3 style="margin-top:1.5rem;">Horaires d'ouverture</h3>
+                    <table class="hours-table">
+                        <tr><td>Mardi &mdash; Samedi</td><td>8h00 &ndash; 12h30</td></tr>
+                        <tr><td></td><td>14h00 &ndash; 18h00</td></tr>
+                        <tr><td>Dimanche &amp; Lundi</td><td>Ferm&eacute;</td></tr>
+                    </table>
+                </div>
+                <div class="contact-map">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2614.5!2d0.665!3d48.375!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDjCsDIyJzMwLjAiTiAwwrAzOSc1NC4wIkU!5e0!3m2!1sfr!2sfr!4v1" allowfullscreen loading="lazy" title="Localisation Scierie Germond"></iframe>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2025 Scierie Germond Fr&egrave;res &mdash; Le Sablon, 61340 Perche-en-Noc&eacute; &mdash; <a href="tel:+33233734471">02 33 73 44 71</a></p>
+    </footer>
+</body>
+</html>
